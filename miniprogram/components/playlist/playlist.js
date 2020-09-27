@@ -13,15 +13,15 @@ Component({
       // console.log(count);
       // console.log(this._tranNumber(count, 2));
       this.setData({
-        _count: this._tranNumber(count, 2)
-      })
+        _count: this._tranNumber(count, 2),
+      });
     },
   },
   /**
    * 组件的初始数据
    */
   data: {
-    _count: 0
+    _count: 0,
   },
 
   /**
@@ -45,6 +45,12 @@ Component({
         );
         return parseFloat(parseInt(num / 100000000) + "." + decimal) + "忆";
       }
+    },
+    goToMusicList() {
+      console.log()
+      wx.navigateTo({
+        url: `../../pages/musiclist/musiclist?playlistId=${this.properties.playlist.id}`,
+      });
     },
   },
 });
