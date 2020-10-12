@@ -3,6 +3,12 @@
 
 <view class="player-info">
   <view class="player-disc">
-  <image class="player-img" src="{{picUrl}}"></image>
+    <image class="player-img" src="{{picUrl}}"></image>
+  </view>
 </view>
+
+<view class="control">
+  <text class="iconfont icon-shangyishoushangyige"></text>
+  <text class="iconfont icon-bofang"></text>
+  <text class="iconfont icon-xiayigexiayishou"></text>
 </view>
