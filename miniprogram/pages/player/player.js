@@ -6,6 +6,7 @@ let nowPlayingIndex = 0;
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
+  
   /**
    * 页面的初始数据
    */
