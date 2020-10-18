@@ -2,6 +2,8 @@
 let movableAreaWidth = 0;
 let movableViewWidth = 0;
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+let currentTimeSec = -1
+let duration = 0 // 歌曲总时长 秒
 Component({
   /**
    * 组件的属性列表
@@ -30,6 +32,22 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onChange(event){
+      //console.log(event)
+      // 拖动进度条
+      if(event.detail.source === 'touch'){
+        this.data.progress = event.detail.x / (movableAreaWidth - movableViewWidth) * 100
+        this.data.movableDis = event.detail.x
+      }
+    },
+    onTouchEnd(){
+      //console.log('touchEnd')
+      this.setData({
+        progress: this.data.progress,
+        movableDis: this.data.movableDis
+      })
+      backgroundAudioManager.seek(duration * this.data.progress / 100)
+    },
     _getMovableDis() {
       const query = this.createSelectorQuery();
       query.select(".movable-area").boundingClientRect();
@@ -42,25 +60,25 @@ Component({
     },
     _bindBGMEvent() {
       backgroundAudioManager.onPlay(() => {
-        console.log("onPlay");
+        //console.log("onPlay");
       });
 
       backgroundAudioManager.onStop(() => {
-        console.log("onStop");
+        //console.log("onStop");
       });
 
       backgroundAudioManager.onPause(() => {
-        console.log("Pause");
+        //console.log("Pause");
         this.triggerEvent("musicPause");
       });
 
       backgroundAudioManager.onWaiting(() => {
-        console.log("onWaiting");
+        //console.log("onWaiting");
       });
 
       // 背景音乐可以播放的状态
       backgroundAudioManager.onCanplay(() => {
-        console.log("onCanplay");
+        //console.log("onCanplay");
         //console.log(backgroundAudioManager.duration)
         if (typeof backgroundAudioManager.duration != "undefined") {
           this._setTime();
@@ -72,11 +90,24 @@ Component({
       });
 
       backgroundAudioManager.onTimeUpdate(() => {
-        console.log("onTimeUpdate");
+        //console.log("onTimeUpdate");
+        const currentTime = backgroundAudioManager.currentTime // 当前播放时间
+        const duration = backgroundAudioManager.duration // 总时长
+        const sec = currentTime.toString().split('.')[0]
+        if(sec != currentTimeSec){
+          const currentTimeFmt = this._dateFormat(currentTime)
+          this.setData({
+            movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
+            progress: currentTime /duration * 100,
+            ['showTime.currentTime'] : `${currentTimeFmt.min}:${currentTimeFmt.sec}`
+          })
+          currentTimeSec = sec
+        }
+       
       });
 
       backgroundAudioManager.onEnded(() => {
-        console.log("onEnded");
+        //console.log("onEnded");
       });
 
       backgroundAudioManager.onError((res) => {
@@ -88,7 +119,7 @@ Component({
       });
     },
     _setTime() {
-      const duration = backgroundAudioManager.duration;
+      duration = backgroundAudioManager.duration;
       const durationFmt = this._dateFormat(duration);
       this.setData({
         ["showTime.totalTime"]: `${durationFmt.min}:${durationFmt.sec}`,
