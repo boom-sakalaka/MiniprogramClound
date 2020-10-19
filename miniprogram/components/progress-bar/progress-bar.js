@@ -4,6 +4,7 @@ let movableViewWidth = 0;
 const backgroundAudioManager = wx.getBackgroundAudioManager();
 let currentTimeSec = -1
 let duration = 0 // 歌曲总时长 秒
+let isMoving = false // 当前的进度条是否在拖动 解决 进度条拖动的时候 和 updatetime 事件有冲突的问题
 Component({
   /**
    * 组件的属性列表
@@ -35,6 +36,7 @@ Component({
     onChange(event){
       //console.log(event)
       // 拖动进度条
+      isMoving = true
       if(event.detail.source === 'touch'){
         this.data.progress = event.detail.x / (movableAreaWidth - movableViewWidth) * 100
         this.data.movableDis = event.detail.x
@@ -42,6 +44,7 @@ Component({
     },
     onTouchEnd(){
       //console.log('touchEnd')
+      isMoving = false
       this.setData({
         progress: this.data.progress,
         movableDis: this.data.movableDis
@@ -61,6 +64,7 @@ Component({
     _bindBGMEvent() {
       backgroundAudioManager.onPlay(() => {
         //console.log("onPlay");
+        isMoving = false
       });
 
       backgroundAudioManager.onStop(() => {
@@ -91,23 +95,25 @@ Component({
 
       backgroundAudioManager.onTimeUpdate(() => {
         //console.log("onTimeUpdate");
-        const currentTime = backgroundAudioManager.currentTime // 当前播放时间
-        const duration = backgroundAudioManager.duration // 总时长
-        const sec = currentTime.toString().split('.')[0]
-        if(sec != currentTimeSec){
-          const currentTimeFmt = this._dateFormat(currentTime)
-          this.setData({
-            movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
-            progress: currentTime /duration * 100,
-            ['showTime.currentTime'] : `${currentTimeFmt.min}:${currentTimeFmt.sec}`
-          })
-          currentTimeSec = sec
+        if(!isMoving){
+          const currentTime = backgroundAudioManager.currentTime // 当前播放时间
+          const duration = backgroundAudioManager.duration // 总时长
+          const sec = currentTime.toString().split('.')[0]
+          if(sec != currentTimeSec){
+            const currentTimeFmt = this._dateFormat(currentTime)
+            this.setData({
+              movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
+              progress: currentTime /duration * 100,
+              ['showTime.currentTime'] : `${currentTimeFmt.min}:${currentTimeFmt.sec}`
+            })
+            currentTimeSec = sec
+          }
         }
-       
       });
 
       backgroundAudioManager.onEnded(() => {
         //console.log("onEnded");
+        this.triggerEvent('musicEnd')
       });
 
       backgroundAudioManager.onError((res) => {
