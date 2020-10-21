@@ -50,12 +50,12 @@ Component({
     },
     onTouchEnd(){
       //console.log('touchEnd')
-      isMoving = false
       this.setData({
         progress: this.data.progress,
         movableDis: this.data.movableDis
       })
       backgroundAudioManager.seek(duration * this.data.progress / 100)
+      isMoving = false
     },
     _getMovableDis() {
       const query = this.createSelectorQuery();
