@@ -8,4 +8,6 @@
       <x-search></x-search>
     </view>
   </view>
+  <x-login modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail"/>
 </view>
+
