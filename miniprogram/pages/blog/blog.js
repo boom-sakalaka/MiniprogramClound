@@ -31,6 +31,7 @@ Page({
   },
   onLoginSuccess(event) {
     const detail = event.detail
+    //console.log(`../blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`)
     wx.navigateTo({
       url: `../blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
     })

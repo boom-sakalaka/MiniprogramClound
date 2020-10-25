@@ -25,6 +25,7 @@ Page({
       })
       .then((res) => {
         const pl = res.result.playlist;
+        console.log(pl)
         this.setData({
           musiclist: pl.tracks,
           listInfo: {
