@@ -6,6 +6,7 @@ Page({
    */
   data: {
     modalShow: false, // 控制底部弹出层是否显示
+    blogList: [],
   },
   
   // 发布功能
@@ -45,8 +46,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  _loadBlogList() {
+    wx.cloud.callFunction({
+      name: 'blog',
+      data: {
+        $url: 'list',
+        start: 0,
+        count: 10
+      }
+    }).then(res => {
+      //console.log(res)
+      this.setData({
+        blogList : this.data.blogList.concat(res.result)
+      })
+    })
+  },
 
+  onLoad: function (options) {
+    this._loadBlogList()
   },
 
   /**
