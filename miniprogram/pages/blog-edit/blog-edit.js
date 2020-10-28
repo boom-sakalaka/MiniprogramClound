@@ -86,7 +86,8 @@ Page({
       return
     }
     wx.showLoading({
-      title: '发布中'
+      title: '发布中',
+      mask: true,
     })
     let promiseArr = [] // promise 集合对象
     let fileIds = []
@@ -123,7 +124,11 @@ Page({
         wx.showToast({
           title: '发布成功',
         })
+        // 返回博客页面 并刷星页面
         wx.navigateBack()
+        const pages = getCurrentPages()
+        const prevPage = pages[pages.length -2]
+        prevPage.onPullDownRefresh()
       }).catch(e => {
         wx.hideLoading()
         wx.showToast({

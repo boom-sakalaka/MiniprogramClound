@@ -1,5 +1,5 @@
 <view class="container">
   <i class="iconfont icon-sousuo find"></i>
-  <input class="bar" placeholder="{{placeholder}}" placeholder-class="in-bar"></input>
+  <input class="bar" placeholder="{{placeholder}}" placeholder-class="in-bar" bindinput="onInput"></input>
   <button class="search" bind:tap="onSearch" size="mini">搜索</button>
 </view>
