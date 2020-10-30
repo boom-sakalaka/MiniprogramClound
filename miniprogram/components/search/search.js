@@ -26,7 +26,11 @@ Component({
       keyword  = event.detail.value
     },
     onSearch() {
-      console.log(keyword)
+      //console.log(keyword)
+      // 查询方法
+      this.triggerEvent('search',{
+        keyword
+      })
     }
   }
 })

@@ -1,6 +1,6 @@
 // pages/blog/blog.js
+let keyword = ''
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -54,8 +54,9 @@ Page({
       name: 'blog',
       data: {
         $url: 'list',
+        count: 10,
         start,
-        count: 10
+        keyword
       }
     }).then(res => {
       //console.log(res)
@@ -71,6 +72,13 @@ Page({
     wx.navigateTo({
       url: '../../pages/blog-comment/blog-comment?blogid='+ event.target.dataset.blogid,
     })
+  },
+  onSearch(event){
+    this.setData({
+      blogList: []
+    })
+    keyword = event.detail.keyword
+    this._loadBlogList(0)
   },
   onLoad: function (options) {
     this._loadBlogList(0)
