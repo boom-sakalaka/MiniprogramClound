@@ -32,7 +32,7 @@ Component({
       }
       this._getMovableDis();
       this._bindBGMEvent();
-    },
+    }, 
   },
   /**
    * 组件的方法列表
