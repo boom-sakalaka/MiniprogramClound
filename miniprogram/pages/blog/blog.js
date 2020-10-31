@@ -69,8 +69,9 @@ Page({
   },
 
   goComment(event) {
+    console.log(event)
     wx.navigateTo({
-      url: '../../pages/blog-comment/blog-comment?blogid='+ event.target.dataset.blogid,
+      url: '../../pages/blog-comment/blog-comment?blogId='+ event.target.dataset.blogid,
     })
   },
   onSearch(event){
@@ -132,7 +133,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (event) {
+    let blogObj = event.target.dataset.blog
+    return {
+      title: blogObj.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
+      // imageUrl: ''
+    }
   }
 })

@@ -4,8 +4,10 @@
     <text class="item">评论</text>
   </view>
   <view class="ctrl-item share">
-    <i class="iconfont icon-fenxiang icon" />
-    <text class="item">分享</text>
+    <button open-type="share" data-blogid="{{blogId}}" data-blog="{{blog}}" size="mini" class="share-btn" hover-class="share-hover">
+      <i class="iconfont icon-fenxiang icon" />
+      <text class="item">分享</text>
+    </button>
   </view>
 </view>
 
