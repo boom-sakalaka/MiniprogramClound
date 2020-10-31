@@ -1,4 +1,4 @@
-.blog{
+.blog {
   padding: 20rpx;
   background-color: #fff;
 }
@@ -25,7 +25,7 @@
 }
 
 .blog-content {
-  margin:  20rpx 0;
+  margin: 20rpx 0;
   font-size: 32rpx;
   font-weight: 400;
   line-height: 1.5;

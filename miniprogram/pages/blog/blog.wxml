@@ -14,10 +14,17 @@
     <block wx:for="{{blogList}}" wx:key="_id">
       <view class="blog-panel">
         <x-blog-card blog="{{item}}" data-blogid="{{item._id}}" bindtap="goComment"/>
+        <x-blog-ctrl 
+          blogId="{{item._id}}"
+          iconfont="iconfont" 
+          icon-pinglun="icon-pinglun"
+          icon-fenxiang="icon-fenxiang"
+          />
       </view>
+      <view class="blog-split"></view>
     </block>
   </view>
-
+ 
   <!-- 底部弹出层 -->
   <x-login modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail"/>
 </view>

@@ -1,87 +1,83 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"packNpmManually": false,
-		"packNpmRelationList": []
-	},
-	"appid": "wxa8f600d5fc6f11e7",
-	"projectname": "music-imooc",
-	"libVersion": "2.8.1",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "blog",
-					"pathName": "pages/blog/blog",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "pages/blog/blog-edt",
-					"pathName": "pages/blog-edit/blog-edit",
-					"query": "nickName=Step.Up&avatarUrl=https://thirdwx.qlogo.cn/mmopen/vi_32/KiczNE4fwe0N76IJe8dSUHGTh0W8oJWll7g12bFNvI2QCydicsl769V3J0K8Jz6Bwed7dPVnYbWQGkRRiaicdHIfiaQ/132",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "blog",
-					"pathName": "pages/blog/blog",
-					"scene": null
-				}
-			]
-		}
-	}
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "appid": "wxa8f600d5fc6f11e7",
+  "projectname": "music-imooc",
+  "libVersion": "2.8.1",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "blog",
+          "pathName": "pages/blog/blog",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "pages/blog/blog-edt",
+          "pathName": "pages/blog-edit/blog-edit",
+          "query": "nickName=Step.Up&avatarUrl=https://thirdwx.qlogo.cn/mmopen/vi_32/KiczNE4fwe0N76IJe8dSUHGTh0W8oJWll7g12bFNvI2QCydicsl769V3J0K8Jz6Bwed7dPVnYbWQGkRRiaicdHIfiaQ/132",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "blog",
+          "pathName": "pages/blog/blog",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
