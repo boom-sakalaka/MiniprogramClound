@@ -4,7 +4,7 @@ const cloud = require("wx-server-sdk");
 cloud.init();
 const db = cloud.database();
 const axios = require("axios");
-const URL = `https://apis.imooc.com/personalized?icode=1E869A26F5C13737`;
+const URL = `https://apis.imooc.com/personalized?icode=53178D88362B5315`;
 const playlistCollection = db.collection("playlist");
 const MAX_LIMIT = 100;
 
